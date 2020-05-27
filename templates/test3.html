@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>{{ titre }}</title>
+    </head>
+
+    <body>
+        <h1>{{ titre }}</h1>
+        <ul>
+		{% for language,number in languages_count.items() %}
+		   
+		   <table style="width:50%">
+           <tr>
+           <th>Language</th>
+           <th>Number</th>
+           </tr>
+		   <tr>
+           <th>{{language}}</th>
+           <th>{{number}}</th>
+           </tr>
+		   <table style="width:50%">
+		   <tr>
+		   <th>List of repositories</th>
+		   </tr>
+		   
+           {% for i in git_data %}
+		       {% if (i["language"]==language) %}
+			    <tr>
+		          <th>{{ i["name"] }}</th>
+				</tr>  
+			   {% endif %}  
+		   {% endfor %}
+        {% endfor %}
+		
+        </ul>
+    </body>
+</html>
